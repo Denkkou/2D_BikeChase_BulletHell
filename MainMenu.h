@@ -3,6 +3,7 @@
 
 /* The main menu container */
 #include <SDL.h>
+#include <SDL_image.h>
 #include <vector>
 
 #include "FPSDelayTimer.h"
@@ -16,6 +17,7 @@ public:
 	~MainMenu();
 
 	int Run(SDL_Renderer* gameRenderer);
+	void ConstructMenu(SDL_Renderer* gameRenderer);
 
 	void Input();
 	void Update();
@@ -46,5 +48,9 @@ private:
 
 	//std::vector<InterfaceDecoration*> listOfDecorations;
 		//decorations might be sprites, effects, animations etc
+
+	//textures and paths
+	SDL_Texture* menuButtonTextures = nullptr;
+	const char* menuButtonPath = "./Content/Sprites/MenuButtons_Sheet.png";
 };
 #endif

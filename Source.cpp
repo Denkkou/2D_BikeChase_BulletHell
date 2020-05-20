@@ -22,7 +22,7 @@ int main(int argc, char* argvp[]) {
 	else { SDL_LogError(SDL_LOG_CATEGORY_ERROR, "IMG_Init failed!"); }
 
 	//create the window and renderer
-	SDL_Window* gameWindow = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 900, 0);
+	SDL_Window* gameWindow = SDL_CreateWindow("2D Bike Chase - Bullet Hell", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 900, 0);
 	SDL_Renderer* gameRenderer = SDL_CreateRenderer(gameWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	//initialise
