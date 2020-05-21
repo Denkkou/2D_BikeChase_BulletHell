@@ -13,6 +13,8 @@
 
 class MainMenu {
 public:
+	enum returnOption { NewGame, HiScore, Options, Quit };
+
 	MainMenu();
 	~MainMenu();
 
@@ -35,9 +37,7 @@ private:
 	SDL_Event event;
 
 	//flags and enums
-	bool isRunning;
 	int returned;
-	enum returnOption { NewGame, HiScore, Options, Quit };
 
 	//mouse location
 	int mPosX, mPosY;

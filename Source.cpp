@@ -9,9 +9,6 @@
 //defines and enums
 #define SCREEN_WIDTH = 1600;
 #define SCREEN_HEIGHT = 900;
-enum returnedOption { NewGame, HiScore, Options, Quit };
-
-//objects
 
 int main(int argc, char* argvp[]) {
 	//initialise SDL and SDL_image
@@ -31,20 +28,20 @@ int main(int argc, char* argvp[]) {
 		MainMenu mainMenu;
 
 		switch (mainMenu.Run(gameRenderer)) {
-		case NewGame:
+		case MainMenu::NewGame:
 			SDL_Log("New Game returned to source");
 			//init game world with default constructor
 			//run the game world
 			break;
-		case HiScore:
+		case MainMenu::HiScore:
 			SDL_Log("High Score returned to source");
 			//log hi-score in a file?
 			break;
-		case Options:
+		case MainMenu::Options:
 			SDL_Log("Options returned to source");
 			//go to the options menu
 			break;
-		case Quit:
+		case MainMenu::Quit:
 			SDL_Log("Quit returned to source");
 			isRunning = false;
 			break;

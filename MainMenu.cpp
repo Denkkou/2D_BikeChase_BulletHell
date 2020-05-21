@@ -2,7 +2,7 @@
 
 MainMenu::MainMenu() {
 	//initialise members
-	isRunning = true;
+	isFading = false;
 	isClicked = false;
 	returned = -1;
 
@@ -21,13 +21,8 @@ int MainMenu::Run(SDL_Renderer* gameRenderer) {
 	ConstructMenu(gameRenderer);
 
 	//game loop
-	while (isRunning) {
+	while (returned == -1 || isFading) {
 		timer.resetTicks();
-
-		//check if returned has a value if not fading
-		if (!isFading && returned != -1) {
-			isRunning = false;
-		}
 
 		//core functions
 		Input();
