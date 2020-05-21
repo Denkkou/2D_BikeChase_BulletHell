@@ -26,7 +26,7 @@ int MainMenu::Run(SDL_Renderer* gameRenderer) {
 		case HiScore: { return HiScore; break; }
 		case Options: { return Options; break; }
 		case Quit: { return Quit; break; }
-		} //potentially run a fade-out before returning
+		}
 
 		//delay for rest of frame
 		if (timer.getTicks() < DELTA_TIME)
@@ -57,6 +57,7 @@ void MainMenu::Input() {
 	}
 }
 
+//load graphics, build the menu
 void MainMenu::ConstructMenu(SDL_Renderer* gameRenderer) {
 	//load the menu button textures
 	menuButtonTextures = IMG_LoadTexture(gameRenderer, menuButtonPath);
@@ -73,12 +74,13 @@ void MainMenu::Update() {
 		if (DetectMouseOver(mPosX, mPosY, button)) {
 			button->Highlight(true);
 
-			if (isClicked == true)
+			//detect click
+			if (isClicked == true) {
 				returned = button->buttonReturnValue;
+			}
 		}
 		else
 			button->Highlight(false);
-
 	}
 }
 
@@ -94,6 +96,7 @@ bool MainMenu::DetectMouseOver(int mouseX, int mouseY, MenuButton* menuButton) {
 		return false;
 }
 
+//create a new button, push back into vector
 void MainMenu::AddButton(int x, int y, int w, int h, int rtnVal) {
 	//add a new button to the vector of buttons
 	MenuButton* aButton = new MenuButton(x, y, w, h, rtnVal, menuButtonTextures);

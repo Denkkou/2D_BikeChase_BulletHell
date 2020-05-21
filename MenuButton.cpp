@@ -25,10 +25,10 @@ void MenuButton::Highlight(bool flag) {
 
 void MenuButton::Render(SDL_Renderer* gameRenderer) {
 	//set the sprite
-	if (!highlighted)
-		srcRect.y = (dstRect.h * buttonReturnValue);
-	else
+	if (highlighted)
 		srcRect.y = (dstRect.h * buttonReturnValue) + 280;
+	else
+		srcRect.y = (dstRect.h * buttonReturnValue);
 
 	//draw sprite to screen
 	SDL_RenderCopy(gameRenderer, tex, &srcRect, &dstRect);

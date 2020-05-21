@@ -49,7 +49,6 @@ private:
 	//std::vector<InterfaceDecoration*> listOfDecorations;
 		//decorations might be sprites, effects, animations etc
 
-	//textures and paths
 	SDL_Texture* menuButtonTextures = nullptr;
 	const char* menuButtonPath = "./Content/Sprites/MenuButtons_Sheet.png";
 };
