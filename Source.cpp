@@ -12,7 +12,6 @@
 enum returnedOption { NewGame, HiScore, Options, Quit };
 
 //objects
-MainMenu mainMenu;
 
 int main(int argc, char* argvp[]) {
 	//initialise SDL and SDL_image
@@ -29,6 +28,8 @@ int main(int argc, char* argvp[]) {
 	bool isRunning = true;
 
 	do {
+		MainMenu mainMenu;
+
 		switch (mainMenu.Run(gameRenderer)) {
 		case NewGame:
 			SDL_Log("New Game returned to source");

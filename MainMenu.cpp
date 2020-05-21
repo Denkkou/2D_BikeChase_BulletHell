@@ -27,7 +27,6 @@ int MainMenu::Run(SDL_Renderer* gameRenderer) {
 		//check if returned has a value if not fading
 		if (!isFading && returned != -1) {
 			isRunning = false;
-			return returned;
 		}
 
 		//core functions
@@ -39,6 +38,9 @@ int MainMenu::Run(SDL_Renderer* gameRenderer) {
 		if (timer.getTicks() < DELTA_TIME)
 			SDL_Delay(DELTA_TIME - timer.getTicks());
 	}
+
+	//when done, return instruction
+	return returned;
 }
 
 void MainMenu::Input() {
@@ -151,4 +153,5 @@ MainMenu::~MainMenu(){
 		delete button;
 	}
 
+	SDL_DestroyTexture(menuButtonTextures);
 }
