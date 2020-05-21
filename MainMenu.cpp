@@ -24,20 +24,16 @@ int MainMenu::Run(SDL_Renderer* gameRenderer) {
 	while (isRunning) {
 		timer.resetTicks();
 
+		//check if returned has a value if not fading
+		if (!isFading && returned != -1) {
+			isRunning = false;
+			return returned;
+		}
+
 		//core functions
 		Input();
 		Update();
 		Render(gameRenderer);
-
-		//check if returned has a value if not fading
-		if (!isFading) {
-			switch (returned) {
-			case NewGame: { isRunning = false; return NewGame; break; }
-			case HiScore: { isRunning = false; return HiScore; break; }
-			case Options: { isRunning = false; return Options; break; }
-			case Quit: { isRunning = false; return Quit; break; }
-			}
-		}
 
 		//delay for rest of frame
 		if (timer.getTicks() < DELTA_TIME)
