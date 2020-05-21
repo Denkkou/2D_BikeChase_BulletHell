@@ -5,6 +5,15 @@ MainMenu::MainMenu() {
 	isRunning = true;
 	isClicked = false;
 	returned = -1;
+
+	//fade resources
+	fadeRect.w = 1600;
+	fadeRect.h = 900;
+
+	//how many frames to fade out for
+	fadeDurationFrames = 120;
+	fadeFrameCounter = 0;
+	fadeRectAlpha = 0;
 }
 
 int MainMenu::Run(SDL_Renderer* gameRenderer) {
@@ -20,12 +29,14 @@ int MainMenu::Run(SDL_Renderer* gameRenderer) {
 		Update();
 		Render(gameRenderer);
 
-		//check if returned has a value
-		switch (returned) {
-		case NewGame: { return NewGame; break; }
-		case HiScore: { return HiScore; break; }
-		case Options: { return Options; break; }
-		case Quit: { return Quit; break; }
+		//check if returned has a value if not fading
+		if (!isFading) {
+			switch (returned) {
+			case NewGame: { isRunning = false; return NewGame; break; }
+			case HiScore: { isRunning = false; return HiScore; break; }
+			case Options: { isRunning = false; return Options; break; }
+			case Quit: { isRunning = false; return Quit; break; }
+			}
 		}
 
 		//delay for rest of frame
@@ -70,12 +81,29 @@ void MainMenu::ConstructMenu(SDL_Renderer* gameRenderer) {
 }
 
 void MainMenu::Update() {
+	//if we are fading, advance the fade-out
+	if (isFading) {
+		if (fadeFrameCounter < fadeDurationFrames) {
+			fadeFrameCounter++;
+
+			//change alpha each frame
+			fadeRectAlpha += (255 / fadeDurationFrames) + 1;
+
+			if (fadeRectAlpha > 255)
+				fadeRectAlpha = 255;
+		}
+		else
+			isFading = false;
+	}
+
+	//mange mouseover and click for every button
 	for (auto& button : listOfButtons) {
 		if (DetectMouseOver(mPosX, mPosY, button)) {
 			button->Highlight(true);
 
 			//detect click
-			if (isClicked == true) {
+			if (isClicked == true && !isFading) {
+				isFading = true;
 				returned = button->buttonReturnValue;
 			}
 		}
@@ -113,11 +141,15 @@ void MainMenu::Render(SDL_Renderer* gameRenderer) {
 		button->Render(gameRenderer);
 	}
 
+	SDL_SetRenderDrawBlendMode(gameRenderer, SDL_BLENDMODE_BLEND);
+	SDL_SetRenderDrawColor(gameRenderer, 0, 0, 0, fadeRectAlpha);
+	SDL_RenderFillRect(gameRenderer, &fadeRect);
+
 	//push changes
 	SDL_RenderPresent(gameRenderer);
 }
 
-MainMenu::~MainMenu() {
+MainMenu::~MainMenu(){
 	//clear buttons from memory
 	for (auto& button : listOfButtons){
 		delete button;

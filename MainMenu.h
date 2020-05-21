@@ -51,5 +51,12 @@ private:
 
 	SDL_Texture* menuButtonTextures = nullptr;
 	const char* menuButtonPath = "./Content/Sprites/MenuButtons_Sheet.png";
+
+	//fade out
+	bool isFading;
+	int fadeDurationFrames;
+	int fadeFrameCounter;
+	int fadeRectAlpha;
+	SDL_Rect fadeRect;
 };
 #endif
