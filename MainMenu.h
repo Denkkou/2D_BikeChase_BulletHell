@@ -32,8 +32,6 @@ private:
 	bool DetectMouseOver(int mouseX, int mouseY, MenuButton* button);
 
 	//objects
-	FPSDelayTimer timer;
-	const int DELTA_TIME = 16;
 	SDL_Event event;
 
 	//flags and enums

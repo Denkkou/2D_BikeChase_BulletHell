@@ -11,7 +11,7 @@ MainMenu::MainMenu() {
 	fadeRect.h = 900;
 
 	//how many frames to fade out for
-	fadeDurationFrames = 120;
+	fadeDurationFrames = 60;
 	fadeFrameCounter = 0;
 	fadeRectAlpha = 0;
 }
@@ -19,6 +19,10 @@ MainMenu::MainMenu() {
 int MainMenu::Run(SDL_Renderer* gameRenderer) {
 	//build menu
 	ConstructMenu(gameRenderer);
+
+	//frame timer
+	FPSDelayTimer timer;
+	const int DELTA_TIME = 16;
 
 	//game loop
 	while (returned == -1 || isFading) {
