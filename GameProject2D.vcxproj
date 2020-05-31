@@ -142,9 +142,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FPSDelayTimer.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GetTime.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MenuButton.cpp" />
+    <ClCompile Include="PauseScreenOverlay.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,8 +157,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FPSDelayTimer.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GetTime.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MenuButton.h" />
+    <ClInclude Include="PauseScreenOverlay.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

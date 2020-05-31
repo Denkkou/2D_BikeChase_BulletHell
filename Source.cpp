@@ -5,6 +5,7 @@
 
 //headers
 #include "MainMenu.h"
+#include "GameManager.h"
 
 //defines and enums
 #define SCREEN_WIDTH = 1600;
@@ -25,13 +26,15 @@ int main(int argc, char* argvp[]) {
 	bool isRunning = true;
 
 	do {
+		//create our containers
 		MainMenu mainMenu;
+		GameManager gameManager;
 
 		switch (mainMenu.Run(gameRenderer)) {
 		case MainMenu::NewGame:
-			SDL_Log("New Game returned to source");
-			//init game world with default constructor
-			//run the game world
+			//begin new game, run game manager
+			SDL_Log("Starting a New Game");
+			gameManager.Run(gameRenderer);
 			break;
 		case MainMenu::HiScore:
 			SDL_Log("High Score returned to source");
