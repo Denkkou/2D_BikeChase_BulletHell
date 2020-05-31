@@ -2,7 +2,7 @@
 
 Player::Player() {
 	//set initial spawn
-	posX = 1200/2 + 30;
+	posX = 1200/2 + 15;
 	posY = 3 * (900/4) + 30;
 
 	//set player size
@@ -44,12 +44,14 @@ void Player::Update(SDL_Rect& gameField) {
 
 //behaviour functions
 void Player::AttackLeft() {
+	SDL_Log("Player Attacked Left");
 }
 
 void Player::Shoot() {
 }
 
 void Player::AttackRight() {
+	SDL_Log("Player Attacked Right");
 }
 
 void Player::MoveUp() {
@@ -70,16 +72,16 @@ void Player::MoveRight() {
 
 void Player::SlowDown(bool slow) {
 	if (slow) {
-		maxHoriSpeed = 3;
-		maxVertSpeed = 4;
+		maxHoriSpeed = HORIZONTAL_MAX_SPEED / 2;
+		maxVertSpeed = VERTICAL_MAX_SPEED / 2;
 	}
 	else {
-		maxHoriSpeed = 6;
-		maxVertSpeed = 8;
+		maxHoriSpeed = HORIZONTAL_MAX_SPEED;
+		maxVertSpeed = VERTICAL_MAX_SPEED;
 	}
 }
 
 void Player::Render(SDL_Renderer* gameRenderer) {
-	SDL_SetRenderDrawColor(gameRenderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(gameRenderer, 0, 255, 0, 255);
 	SDL_RenderFillRect(gameRenderer, &playerRect);
 }

@@ -5,6 +5,9 @@
 #include <SDL_image.h>
 #include "Vector2D.h"
 
+#define VERTICAL_MAX_SPEED (8)
+#define HORIZONTAL_MAX_SPEED (6)
+
 class Player {
 public:
 	Player();

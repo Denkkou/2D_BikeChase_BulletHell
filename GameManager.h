@@ -10,7 +10,10 @@
 #include "FPSDelayTimer.h"
 #include "GetTime.h"
 #include "Player.h"
+#include "Sprite.h"
 //#include "Entity.h"
+
+#define SCROLL_SPEED (20)
 
 class GameManager {
 public:
@@ -32,7 +35,6 @@ private:
 	GetTime timeGetter;
 
 	bool gameRunning;
-	bool isPaused;
 
 	int currentLives;
 	int currentScore;
@@ -43,9 +45,13 @@ private:
 
 	//std::vector<Entity*> gameEntitiesVector;
 
-	//change this gamefield to restrict where the player
-	//can move - this might change when the BG sprites
-	//are implemented
+	//restricted area of the viewport
 	SDL_Rect gameField;
+	Sprite gameFieldSpriteA;
+	Sprite gameFieldSpriteB;
+	
+
+	SDL_Rect gameViewportBacking;
+	Sprite windowFrame;
 };
 #endif
